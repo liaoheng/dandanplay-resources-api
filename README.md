@@ -14,7 +14,7 @@ docker build --build-arg MIRRORS=https://pypi.mirrors.ustc.edu.cn/simple -t dand
 # docker运行
 docker run -e DDP_HTTP_PROXY=http://192.168.1.54:1081 -e DDP_HOST=0.0.0.0 -e DDP_PORT=8000 -p 8000:8000 -d dandanplay-resources/dmhy
 ```
-或者下载导入镜像
+或者[下载](https://github.com/liaoheng/dandanplay-resources-api/releases/latest)导入镜像
 ```shell
 #上传
  scp -P [端口] 本地镜像.tar.gz 用户名@服务器IP:服务器镜像路径
