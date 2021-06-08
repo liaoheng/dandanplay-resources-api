@@ -3,8 +3,12 @@
 
 """
 https://pastebin.ubuntu.com/p/mGP7JRpBtd
+https://pastebin.ubuntu.com/p/b33zZ3pvVr
 https://c.tieba.baidu.com/p/7192130039
 """
+
+__version__ = "1.0"
+
 import getopt
 import logging
 import os
@@ -72,7 +76,10 @@ def parse_list_tr(tr):
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {
+        "dandanplay-resources-api": "ddp_dmhy",
+        "version": __version__
+    }
 
 
 @app.get("/subgroup")
@@ -96,7 +103,7 @@ def type():
 
 
 @app.get("/list")
-def list(keyword: str, subgroup: Optional[int] = 0, type: Optional[int] = 0, r: Optional[str] = None):
+def list(keyword: str, subgroup: Optional[str] = 0, type: Optional[str] = 0):
     res = requests.get(dmhy_list_uri.format(keyword, type, subgroup), proxies=get_proxies())
     res.encoding = "utf-8"
     soup = BeautifulSoup(res.text, 'html.parser')
